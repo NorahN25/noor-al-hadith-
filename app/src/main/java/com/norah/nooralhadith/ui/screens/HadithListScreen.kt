@@ -29,6 +29,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.luminance
 
 import androidx.compose.ui.layout.ContentScale
 
@@ -64,25 +65,51 @@ fun HadithListScreen(
 
 ) {
 
-    val pastelBg = Brush.verticalGradient(
+    val isDark = MaterialTheme.colorScheme.background.luminance() < 0.5f
 
-        colors = listOf(
+    val bg = if (!isDark) {
 
-            Color(0xFFEFE5FF),
+        Brush.verticalGradient(
 
-            Color(0xFFFFE1F1),
+            colors = listOf(
 
-            Color(0xFFE6F2FF),
+                Color(0xFFEFE5FF),
 
-            Color(0xFFFFF3C9)
+                Color(0xFFFFE1F1),
+
+                Color(0xFFE6F2FF),
+
+                Color(0xFFFFF3C9)
+
+            )
 
         )
 
-    )
+    } else {
 
-    val subTextColor = Color(0xFF6B5B72)
+        Brush.verticalGradient(
 
-    val cardBg = Color.White.copy(alpha = 0.65f)
+            colors = listOf(
+
+                Color(0xFF1B1620),
+
+                Color(0xFF1A1F2A),
+
+                Color(0xFF12151D),
+
+                Color(0xFF1E1A14)
+
+            )
+
+        )
+
+    }
+
+    val titleColor = MaterialTheme.colorScheme.primary
+
+    val subTextColor = MaterialTheme.colorScheme.onSurfaceVariant
+
+    val cardBg = MaterialTheme.colorScheme.surface.copy(alpha = if (!isDark) 0.65f else 0.85f)
 
     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
 
@@ -92,7 +119,7 @@ fun HadithListScreen(
 
                 .fillMaxSize()
 
-                .background(pastelBg)
+                .background(bg)
 
                 .padding(horizontal = 16.dp)
 
@@ -146,7 +173,7 @@ fun HadithListScreen(
 
                     fontWeight = FontWeight.SemiBold,
 
-                    color = subTextColor,
+                    color = titleColor,
 
                     textAlign = TextAlign.Center,
 
@@ -232,13 +259,15 @@ private fun HadithRow(
 
 ) {
 
-    val cardBg = Color.White.copy(alpha = 0.70f)
+    val isDark = MaterialTheme.colorScheme.background.luminance() < 0.5f
 
-    val titleColor = Color(0xFF3E3A48)
+    val cardBg = MaterialTheme.colorScheme.surface.copy(alpha = if (!isDark) 0.70f else 0.88f)
 
-    val narratorColor = Color(0xFF7A7288)
+    val titleColor = MaterialTheme.colorScheme.onSurface
 
-    val arrowColor = Color(0xFF7A6FA0)
+    val narratorColor = MaterialTheme.colorScheme.onSurfaceVariant
+
+    val arrowColor = MaterialTheme.colorScheme.primary
 
     Card(
 
@@ -316,7 +345,7 @@ private fun HadithRow(
 
         }
 
-        Divider(color = Color(0xFFF2EDF8))
+        Divider(color = MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.6f))
 
     }
 

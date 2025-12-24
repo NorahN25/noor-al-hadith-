@@ -6,7 +6,12 @@ import androidx.activity.ComponentActivity
 
 import androidx.activity.compose.setContent
 
+import androidx.compose.material3.Surface
+
+import androidx.compose.material3.MaterialTheme
+
 import androidx.navigation.compose.rememberNavController
+
 import com.norah.nooralhadith.ui.navigation.AppNavGraph
 
 import com.norah.nooralhadith.ui.theme.NoorAlHadithTheme
@@ -21,9 +26,13 @@ class MainActivity : ComponentActivity() {
 
             NoorAlHadithTheme {
 
-                val navController = rememberNavController()
+                Surface(color = MaterialTheme.colorScheme.background) {
 
-                AppNavGraph(navController)
+                    val navController = rememberNavController()
+
+                    AppNavGraph(navController)
+
+                }
 
             }
 

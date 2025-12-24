@@ -30,23 +30,24 @@ import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
 
-    primary = BrandPrimary,
+    primary = BrandPrimaryDark,          // بدل BrandPrimary
 
-    secondary = BrandSecondary,
+    secondary = BrandSecondaryDark,       // بدل BrandSecondary
 
-    background = Color(0xFF121212),
+    background = DarkBg,
 
-    surface = Color(0xFF1E1E1E),
+    surface = DarkSurface,
 
-    onPrimary = Color.White,
+    onPrimary = Color(0xFF1A1419),        // نص فوق primary
 
-    onSecondary = Color.White,
+    onSecondary = Color(0xFF0E1720),
 
-    onBackground = Color.White,
+    onBackground = DarkOn,
 
-    onSurface = Color.White
+    onSurface = DarkOn,
 
-)
+    )
+
 
 private val LightColorScheme = lightColorScheme(
 

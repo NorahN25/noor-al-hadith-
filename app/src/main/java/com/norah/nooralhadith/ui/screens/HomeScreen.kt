@@ -1,38 +1,56 @@
 package com.norah.nooralhadith.ui.screens
 
 import androidx.compose.foundation.Image
+
 import androidx.compose.foundation.background
+
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.statusBarsPadding
+
+import androidx.compose.foundation.layout.*
+
 import androidx.compose.foundation.shape.CircleShape
+
 import androidx.compose.material3.Card
+
 import androidx.compose.material3.CardDefaults
+
+import androidx.compose.material3.MaterialTheme
+
 import androidx.compose.material3.Text
+
 import androidx.compose.runtime.Composable
+
 import androidx.compose.runtime.CompositionLocalProvider
+
 import androidx.compose.ui.Alignment
+
 import androidx.compose.ui.Modifier
+
 import androidx.compose.ui.draw.clip
+
 import androidx.compose.ui.graphics.Brush
+
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.luminance
+
 import androidx.compose.ui.layout.ContentScale
+
 import androidx.compose.ui.platform.LocalLayoutDirection
+
 import androidx.compose.ui.res.painterResource
+
 import androidx.compose.ui.text.font.FontWeight
+
 import androidx.compose.ui.text.style.TextAlign
+
 import androidx.compose.ui.unit.Dp
+
 import androidx.compose.ui.unit.LayoutDirection
+
 import androidx.compose.ui.unit.dp
+
 import androidx.compose.ui.unit.sp
+
 import com.norah.nooralhadith.R
 
 @Composable
@@ -45,35 +63,59 @@ fun HomeScreen(
 
 ) {
 
-    val pastelBg = Brush.Companion.verticalGradient(
+    val isDark = MaterialTheme.colorScheme.background.luminance() < 0.5f
 
-        colors = listOf(
+    val pastelBg = if (!isDark) {
 
-            Color(0xFFEFE5FF),
+        Brush.verticalGradient(
 
-            Color(0xFFFFE1F1),
+            colors = listOf(
 
-            Color(0xFFE6F2FF),
+                Color(0xFFEFE5FF),
 
-            Color(0xFFFFF3C9)
+                Color(0xFFFFE1F1),
+
+                Color(0xFFE6F2FF),
+
+                Color(0xFFFFF3C9)
+
+            )
 
         )
 
-    )
+    } else {
 
-    val titleColor = Color(0xFFB03A6A)
+        Brush.verticalGradient(
 
-    val subTextColor = Color(0xFF6B5B72)
+            colors = listOf(
 
-    val circleColor = Color(0xFFB03A6A)
+                Color(0xFF1B1620),
 
-    val circleTextColor = Color.Companion.White
+                Color(0xFF1A1F2A),
+
+                Color(0xFF12151D),
+
+                Color(0xFF1E1A14)
+
+            )
+
+        )
+
+    }
+
+    val titleColor = MaterialTheme.colorScheme.primary
+
+    val subTextColor = MaterialTheme.colorScheme.onSurfaceVariant
+
+    val circleColor = MaterialTheme.colorScheme.primary
+
+    val circleTextColor = MaterialTheme.colorScheme.onPrimary
 
     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
 
         Column(
 
-            modifier = Modifier.Companion
+            modifier = Modifier
 
                 .fillMaxSize()
 
@@ -83,13 +125,11 @@ fun HomeScreen(
 
                 .statusBarsPadding(),
 
-            horizontalAlignment = Alignment.Companion.CenterHorizontally
+            horizontalAlignment = Alignment.CenterHorizontally
 
         ) {
 
-            // ✅ نزلنا العنوان شوي لتحت
-
-            Spacer(modifier = Modifier.Companion.height(22.dp))
+            Spacer(modifier = Modifier.height(22.dp))
 
             Text(
 
@@ -97,17 +137,17 @@ fun HomeScreen(
 
                 fontSize = 22.sp,
 
-                fontWeight = FontWeight.Companion.ExtraBold,
+                fontWeight = FontWeight.ExtraBold,
 
                 color = titleColor,
 
-                modifier = Modifier.Companion.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth(),
 
-                textAlign = TextAlign.Companion.Center
+                textAlign = TextAlign.Center
 
             )
 
-            Spacer(modifier = Modifier.Companion.height(6.dp))
+            Spacer(modifier = Modifier.height(6.dp))
 
             Text(
 
@@ -117,25 +157,27 @@ fun HomeScreen(
 
                 color = subTextColor,
 
-                modifier = Modifier.Companion.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth(),
 
-                textAlign = TextAlign.Companion.Center
+                textAlign = TextAlign.Center
 
             )
 
-            Spacer(modifier = Modifier.Companion.height(16.dp))
-
-            // ✅ (اختياري) إذا تبين تحذفينه لاحقًا
+            Spacer(modifier = Modifier.height(16.dp))
 
             Card(
 
-                modifier = Modifier.Companion
+                modifier = Modifier
 
                     .fillMaxWidth()
 
                     .height(140.dp),
 
-                colors = CardDefaults.cardColors(containerColor = Color.Companion.White.copy(alpha = 0.35f)),
+                colors = CardDefaults.cardColors(
+
+                    containerColor = MaterialTheme.colorScheme.surface.copy(alpha = if (!isDark) 0.35f else 0.70f)
+
+                ),
 
                 elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
 
@@ -147,25 +189,21 @@ fun HomeScreen(
 
                     contentDescription = null,
 
-                    modifier = Modifier.Companion.fillMaxSize(),
+                    modifier = Modifier.fillMaxSize(),
 
-                    contentScale = ContentScale.Companion.Crop
+                    contentScale = ContentScale.Crop
 
                 )
 
             }
 
-            // ✅ الدائرة الأولى تنزل زيادة
-
-            Spacer(modifier = Modifier.Companion.height(36.dp))
-
-            // ========= الدائرة الأولى + (عكسنا اتجاه الولد) =========
+            Spacer(modifier = Modifier.height(36.dp))
 
             Box(
 
-                modifier = Modifier.Companion.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth(),
 
-                contentAlignment = Alignment.Companion.Center
+                contentAlignment = Alignment.Center
 
             ) {
 
@@ -177,13 +215,11 @@ fun HomeScreen(
 
                     textColor = circleTextColor,
 
-                    size = 175.dp, // ✅ كبرنا الدائرة شوي
+                    size = 175.dp,
 
                     onClick = onHadithListClick
 
                 )
-
-                // ✅ الولد صار في الجهة الثانية (يسار الشاشة) وكبرناه
 
                 Image(
 
@@ -191,31 +227,27 @@ fun HomeScreen(
 
                     contentDescription = null,
 
-                    modifier = Modifier.Companion
+                    modifier = Modifier
 
                         .size(150.dp)
 
-                        .align(Alignment.Companion.CenterStart)
+                        .align(Alignment.CenterStart)
 
                         .offset(x = 5.dp),
 
-                    contentScale = ContentScale.Companion.Fit
+                    contentScale = ContentScale.Fit
 
                 )
 
             }
 
-            // ✅ مسافة أكبر بين الدائرتين
-
-            Spacer(modifier = Modifier.Companion.height(68.dp))
-
-            // ========= الدائرة الثانية + (عكسنا اتجاه البنت) =========
+            Spacer(modifier = Modifier.height(68.dp))
 
             Box(
 
-                modifier = Modifier.Companion.fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth(),
 
-                contentAlignment = Alignment.Companion.Center
+                contentAlignment = Alignment.Center
 
             ) {
 
@@ -227,13 +259,11 @@ fun HomeScreen(
 
                     textColor = circleTextColor,
 
-                    size = 175.dp, // ✅ كبرنا الدائرة شوي
+                    size = 175.dp,
 
                     onClick = onQuizClick
 
                 )
-
-                // ✅ البنت صارت في الجهة الثانية (يمين الشاشة) وكبرناها
 
                 Image(
 
@@ -241,21 +271,21 @@ fun HomeScreen(
 
                     contentDescription = null,
 
-                    modifier = Modifier.Companion
+                    modifier = Modifier
 
                         .size(150.dp)
 
-                        .align(Alignment.Companion.CenterEnd)
+                        .align(Alignment.CenterEnd)
 
                         .offset(x = (-6).dp),
 
-                    contentScale = ContentScale.Companion.Fit
+                    contentScale = ContentScale.Fit
 
                 )
 
             }
 
-            Spacer(modifier = Modifier.Companion.height(24.dp))
+            Spacer(modifier = Modifier.height(24.dp))
 
         }
 
@@ -281,7 +311,7 @@ private fun CircleAction(
 
     Box(
 
-        modifier = Modifier.Companion
+        modifier = Modifier
 
             .size(size)
 
@@ -291,7 +321,7 @@ private fun CircleAction(
 
             .clickable { onClick() },
 
-        contentAlignment = Alignment.Companion.Center
+        contentAlignment = Alignment.Center
 
     ) {
 
@@ -301,11 +331,11 @@ private fun CircleAction(
 
             fontSize = 16.sp,
 
-            fontWeight = FontWeight.Companion.SemiBold,
+            fontWeight = FontWeight.SemiBold,
 
             color = textColor,
 
-            textAlign = TextAlign.Companion.Center
+            textAlign = TextAlign.Center
 
         )
 

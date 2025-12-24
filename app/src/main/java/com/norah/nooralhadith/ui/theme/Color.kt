@@ -29,4 +29,20 @@ val PinkTitle = Color(0xFFD16BA5)   // عنوان
 val TextPrimary = Color(0xFF4A4A4A)
 
 val TextSecondary = Color(0xFF8A8A8A)
+// ===== Dark mode helpers (ADD ONLY) =====
+
+val DarkBg = Color(0xFF121212)
+
+val DarkSurface = Color(0xFF1E1E1E)
+
+val DarkOn = Color(0xFFF2F2F2)
+
+val DarkMuted = Color(0xFFB9B6C3)
+
+// (اختياري) درجات للبراند على الدارك
+
+val BrandPrimaryDark = Color(0xFFD6B6D2)   // وردي/موف أفتح يبان على الخلفية الغامقة
+
+val BrandSecondaryDark = Color(0xFFAEC6E6) // أزرق أفتح
+
 

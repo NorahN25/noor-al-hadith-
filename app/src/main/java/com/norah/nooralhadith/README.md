@@ -1,56 +1,59 @@
 Noor Al-Hadith
-Noor Al-Hadith is a small Android application built as a graduation project.
+Noor Al-Hadith is a small Android application developed as a Graduation Project.
 
-The app helps users read selected Hadith, learn about their narrators, and test their knowledge through a simple quiz.
+The app aims to help users read selected Hadiths, learn about their narrators, and reinforce understanding through a simple and interactive quiz.
 
 ⸻
 Project Overview
 
-The application provides:
+The application focuses on simplicity and clarity, making it suitable for learning and exploration.
 
-	•	A clean and simple UI suitable for learning
+It provides:
 
-	•	Selected Hadiths with explanations
+	•	A clean and friendly user interface
 
-	•	Narrator information
+	•	A curated list of selected Hadiths
+
+	•	Clear explanations suitable for beginners
+
+	•	Narrator information for each Hadith
 
 	•	A quiz feature to test understanding
 
-	•	Loading and error states for better user experience
+	•	Proper loading and error states for a smooth user experience
 
 ⸻
 Architecture
 
-The project follows a clean and simple architecture with clear separation of concerns:
+The project follows a clean and organized architecture with clear separation of responsibilities:
+UI Layer
 
-	•	UI Layer
+	•	Built using Jetpack Compose
 
-	•	Jetpack Compose screens
+	•	Handles UI rendering and user interaction
 
-	•	UI state handling (Loading / Success / Error)
+	•	Manages UI states (Loading / Success / Error)
+Domain Layer
 
-	•	Domain Layer
+	•	Contains repository interfaces
 
-	•	Repository interfaces
-
-	•	Business logic
-
-	•	Data Layer
+	•	Handles business logic
+Data Layer
 
 	•	Local data (Hadith metadata, explanations, images)
 
-	•	Remote data using a public Hadith API
+	•	Remote data fetched from a public Hadith API
 
 ⸻
 API
 
-Hadith texts are fetched from a public Hadith API:
+Hadith texts are retrieved from a public Hadith API:
 
 	•	api.hadith.sutanlab.id
 
 	•	No authentication required
 
-	•	Used only to retrieve Hadith text (matn)
+	•	Used only to fetch the Hadith text (matn)
 
 ⸻
 Key Features
@@ -59,13 +62,15 @@ Key Features
 
 	•	Main Screen
 
-	•	Hadith Details Screen
+	•	Hadith List & Details Screen
 
 	•	Quiz Screen
 
 	•	Public API integration
 
 	•	Proper state handling using ViewModel and StateFlow
+
+	•	Dark Mode support (follows system theme automatically)
 
 ⸻
 Technologies Used
