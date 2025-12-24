@@ -58,19 +58,24 @@ Hadith texts are retrieved from a public Hadith API:
 ⸻
 Key Features
 
-	•	Splash Screen
+    •  Splash Screen
 
-	•	Main Screen
+    •  Main Screen
 
-	•	Hadith List & Details Screen
+    •  Hadith List & Details Screen
 
-	•	Quiz Screen
+    •  Quiz Screen
 
-	•	Public API integration
+    •  Public API integration
 
-	•	Proper state handling using ViewModel and StateFlow
+    •  Proper state handling using ViewModel and StateFlow
 
-	•	Dark Mode support (follows system theme automatically)
+    •  Dark Mode support (follows system theme automatically)
+
+    • Quiz feature with audio feedback for correct and incorrect answers
+
+
+
 
 ⸻
 Technologies Used
